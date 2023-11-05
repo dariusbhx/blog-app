@@ -1,8 +1,8 @@
 <template>
     <Head title="Settings" />
-    <div>
+    <div class="flex justify-between mb-6">
         <h1 class="text-3xl">Users </h1>
-        <input type="text" placeholder="Search ...">
+        <input type="text" placeholder="Search ..." class ="border px-2 rounded-lg">
     </div>
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
