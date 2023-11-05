@@ -1,9 +1,8 @@
 <template>
     <h1>Hello </h1>
-    <Nav />
+    <Nav/>
 </template>
-    
+
 <script setup>
-    import Nav from '../Shared/Nav.vue';
+import Nav from '../Shared/Nav.vue';
 </script>
-    
