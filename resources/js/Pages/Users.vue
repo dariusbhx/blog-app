@@ -1,5 +1,4 @@
 <template>
-    <Layout />
     <h1 class="text-3xl">Users </h1>
 
     <div style="margin-top:700px;">
@@ -10,10 +9,8 @@
 </template>
     
 <script setup>
-    import Layout from '../Shared/Layout.vue';
  
     defineProps({
         time: String
     });
-</script>
-    
+</script>    
