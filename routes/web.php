@@ -1,8 +1,7 @@
 <?php
-
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +23,9 @@ Route::get('/settings', function () {
 
 Route::get('/users',  function () {
     return inertia('Users', [
-        'time' => now()->toTimeString(),
+        'users' => User::all()->map(fn($user) => [
+            'name' => $user->name
+        ])
     ]);
 });
 
