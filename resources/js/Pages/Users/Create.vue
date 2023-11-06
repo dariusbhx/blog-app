@@ -17,6 +17,8 @@
                 v-model="form.name"
                 required
             >
+
+            <div v-if="errors.name" v-text="errors.name" class="text-red-500 text-sm"></div>
         </div>
         <div class="mb-6">
             <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="name">
@@ -31,6 +33,8 @@
                 v-model="form.email"
                 required
             >
+
+            <div v-if="errors.email" v-text="errors.email" class="text-red-500 text-sm"></div>
         </div>
 
         <div class="mb-6">
@@ -46,6 +50,8 @@
                 v-model="form.password"
                 required
             >
+            <div v-if="errors.password" v-text="errors.password" class="text-red-500 text-sm"></div>
+
         </div>
 
         <div class="mb-6">
@@ -57,8 +63,7 @@
 </template>
 
 <script setup>
-    import {Head} from '@inertiajs/vue3'
-    import {Inertia} from "@inertiajs/inertia";
+    import {Head, router} from '@inertiajs/vue3'
 
     let form = {
         name: '',
@@ -66,7 +71,11 @@
         password: ''
     }
 
+    defineProps({
+        errors: Object
+    })
+
     let submit = () => {
-        Inertia.post('/users', form);
+        router.post('/users', form);
     }
 </script>
