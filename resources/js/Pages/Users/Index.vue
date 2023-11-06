@@ -49,6 +49,7 @@
 import {Head, router} from '@inertiajs/vue3'
 import Pagination from "../../Shared/Pagination.vue"
 import {ref, watch} from 'vue'
+import throttle from 'lodash/throttle.js'
 import {Inertia} from '@inertiajs/inertia'
 let props = defineProps({
     users: Object,
@@ -56,11 +57,11 @@ let props = defineProps({
 });
 
 let search = ref(props.filters.search);
-watch(search, value => {
+watch(search, throttle(function (value)  {
     router.get('/users',
         {search: value},
         {preserveState:true, replace:true}
     )
-})
+}, 500))
 
 </script>
