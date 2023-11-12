@@ -6,7 +6,7 @@
             <div class="flex items-center">
                 <h1 class="text-3xl">Users </h1>
 
-                <Link href="/users/create" class="text-blue-500 text-sm ml-3">New User</Link>
+                <Link v-if="can.createUser" href="/users/create" class="text-blue-500 text-sm ml-3">New User</Link>
             </div>
             <input v-model="search" type="text" placeholder="Search ..." class="border px-2 rounded-lg">
         </div>
@@ -28,7 +28,7 @@
                                 </td>
 
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <Link :href="`/users/${user.id}/edit`"
+                                    <Link v-if="user.can.edit" :href="`/users/${user.id}/edit`"
                                           class="text-indigo-600 hover:text-indigo-900">
                                         Edit
                                     </Link>
@@ -53,7 +53,8 @@ import throttle from 'lodash/throttle.js'
 import {Inertia} from '@inertiajs/inertia'
 let props = defineProps({
     users: Object,
-    filters: Object
+    filters: Object,
+    can: Boolean
 });
 
 let search = ref(props.filters.search);
